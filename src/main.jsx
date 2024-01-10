@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/your-repo-name">
+    <BrowserRouter basename="/Demo-AI-Education">
       <App />
     </BrowserRouter>
   </React.StrictMode>
