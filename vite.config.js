@@ -7,5 +7,9 @@ export default defineConfig({
   plugins: [react()],
   build: {
     chunkSizeWarningLimit: 1000, // Set your desired limit
+    rollupOptions: {
+      external: ['/Demo-AI-Education/main.js'],
+    },
   },
+ 
 })
