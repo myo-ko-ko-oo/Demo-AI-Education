@@ -3,7 +3,7 @@
 import { useState } from "react";
 import UserResponseContext from "./UserResponseContext";
 import instance from "../api/axios";
-import openai from "../api/OpenAi";
+// import openai from "../api/OpenAi";
 
 const UserResponseContextProvider = ({ children }) => {
   const [response, setResponse] = useState(null);
@@ -11,22 +11,22 @@ const UserResponseContextProvider = ({ children }) => {
   //Lesson Start Idea fetch data-----------
   const LessonFetch = async () => {
     try {
-      const res = await openai.chat.completions.create({
-        messages: [
-          {
-            role: "user",
-            content:
-              "could you tell me how to resolve myanmar political situration? answer 1 to 5 explain",
-          },
-        ],
-        model: "gpt-3.5-turbo",
-      });
-      console.log(res.choices[0].message);
-      setResponse(res.choices[0].message.content);
-      localStorage.setItem(
-        "set_res",
-        JSON.stringify(res.choices[0].message.content)
-      );
+      // const res = await openai.chat.completions.create({
+      //   messages: [
+      //     {
+      //       role: "user",
+      //       content:
+      //         "could you tell me how to resolve myanmar political situration? answer 1 to 5 explain",
+      //     },
+      //   ],
+      //   model: "gpt-3.5-turbo",
+      // });
+      // console.log(res.choices[0].message);
+      // setResponse(res.choices[0].message.content);
+      // localStorage.setItem(
+      //   "set_res",
+      //   JSON.stringify(res.choices[0].message.content)
+      // );
     } catch (e) {
       console.log(e);
     }
@@ -109,18 +109,18 @@ const UserResponseContextProvider = ({ children }) => {
     }
   };
   // Astrology  fetch data-----------
-  const astrologyFetch = async ({ data }) => {
+  const astrologyFetch = async () => {
     try {
-      const res = await openai.chat.completions.create({
-        messages: [{ role: "user", content: data[0] }],
-        model: "gpt-3.5-turbo",
-      });
-      console.log(res.choices[0].message);
-      setResponse(res.choices[0].message.content);
-      localStorage.setItem(
-        "set_res",
-        JSON.stringify(res.choices[0].message.content)
-      );
+      // const res = await openai.chat.completions.create({
+      //   messages: [{ role: "user", content: data[0] }],
+      //   model: "gpt-3.5-turbo",
+      // });
+      // console.log(res.choices[0].message);
+      // setResponse(res.choices[0].message.content);
+      // localStorage.setItem(
+      //   "set_res",
+      //   JSON.stringify(res.choices[0].message.content)
+      // );
     } catch (e) {
       console.log("Error fetching data:", e);
     }
