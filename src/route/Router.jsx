@@ -20,6 +20,8 @@ import UserEnglishLesson from "../user/UserEnglishLesson";
 import UserResponsePage from "../user/UserResponsePage";
 import Dashboard from "../admin/Dashboard";
 import Users from "../admin/Users";
+import StudentEnglishLesson from "../guest/StudentEnglishLesson";
+import StudentResponsePage from "../guest/StudentResponsePage";
 
 const Router = () => {
   return (
@@ -29,7 +31,7 @@ const Router = () => {
         <Route path="/info" Component={InfoPage} />
         <Route path="/feature" Component={FeaturePage} />
         <Route path="/forget-password" Component={ForgetPassword} />
-        <Route path="/user/english-lesson" Component={UserEnglishLesson} />
+       
         
         <Route element={<GuestLayout />}>
           <Route path="/" Component={GuestHomePage} />
@@ -40,8 +42,10 @@ const Router = () => {
           <Route path="/guest/astrology" Component={GuestAstrology}/>
           <Route path="/guest/job-guide" Component={GuestJobGuide}/>
           <Route path="/guest/english-lesson" Component={GuestEnglishLesson} />
+          <Route path="/student/english-lesson" Component={StudentEnglishLesson} />
           <Route path="/guest/response" Component={GuestResponsePage} />
-          <Route path="/user/response" Component={UserResponsePage} />
+          <Route path="/student/response" Component={StudentResponsePage} />
+       
           <Route path="/pricing" Component={Pricing} />
           <Route element={<RoleLayout />}>
             <Route path="/login" Component={Login} />
@@ -56,6 +60,8 @@ const Router = () => {
         
         <Route path="/admin/dashboard" Component={Dashboard}/>
         <Route path="/admin/users" Component={Users}/>
+        <Route path="/user/english-lesson" Component={UserEnglishLesson} />
+        <Route path="/user/response" Component={UserResponsePage} />
       </Routes>
     </>
   );

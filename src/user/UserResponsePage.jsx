@@ -7,7 +7,7 @@ import BackButton from "../component/BackButton";
 import { useNavigate } from "react-router";
 import { Button } from "flowbite-react";
 import ResLoading from "../component/ResLoading";
-import { useTypewriter } from "react-simple-typewriter";
+
 
 const UserResponsePage = () => {
   const navigate = useNavigate();

@@ -4,13 +4,15 @@ import homeImage from "../assets/image/ams.gif";
 import { LuLogIn } from "react-icons/lu";
 import { AiOutlineForm } from "react-icons/ai";
 import { BsAppIndicator } from "react-icons/bs";
-import GuestCardLayout from "./GuestCardLayout";
+// import GuestCardLayout from "./GuestCardLayout";
 import FooterPage from "../view/FooterPage";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Contact from "../view/Contact";
 import PaymentNotiMessage from "../component/PaymentNotiMessage";
+import TeacherStudentTab from "./TeacherStudentTab";
 // import ResLoading from "../component/ResLoading";
+import { Fade } from "react-awesome-reveal";
 
 const GuestHomePage = () => {
   const navigate = useNavigate();
@@ -29,33 +31,37 @@ const GuestHomePage = () => {
 
   return (
     <>
-    {/* <ResLoading/> */}
+      {/* <ResLoading/> */}
       <div className="mt-16 ">
         {message && (
           <div className="flex justify-center pt-3">
             <PaymentNotiMessage message={message} />
           </div>
         )}
-
-        <div className="home-image flex justify-center">
-          <img className="w-[250px]" src={homeImage} alt="" />
-        </div>
-
+        <Fade direction="down" duration={2000} triggerOnce>
+          <div className="home-image flex justify-center">
+            <img className="w-[250px]" src={homeImage} alt="" />
+          </div>
+        </Fade>
+      
         <div className="Home-content text-center mb-5 dark:text-white">
           <h2>hello</h2>
           <p>abvdknvnvnvs</p>
         </div>
 
         <div className="Button-section flex justify-center text-center ">
-          <Button
-            style={{ zIndex: "0" }}
-            pill
-            gradientDuoTone="purpleToBlue"
-            onClick={() => navigate("/pricing")}
-          >
-            <BsAppIndicator className="inline me-2" />
-            Pricing
-          </Button>
+          <Fade direction="left" duration={2000} triggerOnce>
+            <Button
+              style={{ zIndex: "0" }}
+              pill
+              gradientDuoTone="purpleToBlue"
+              onClick={() => navigate("/pricing")}
+            >
+              <BsAppIndicator className="inline me-2" />
+              Pricing
+            </Button>
+          </Fade>
+
           {user !== null ? (
             <>
               <Button
@@ -98,29 +104,36 @@ const GuestHomePage = () => {
             </>
           ) : (
             <>
-              <Button
-                className="z-0"
-                outline
-                gradientDuoTone="purpleToBlue"
-                pill
-                onClick={() => navigate("/signup")}
-              >
-                <AiOutlineForm className="inline me-2" />
-                Sign Up
-              </Button>
+              <Fade direction="right" duration={2000} triggerOnce>
+                <Button
+                  className="z-0"
+                  outline
+                  gradientDuoTone="purpleToBlue"
+                  pill
+                  onClick={() => navigate("/signup")}
+                >
+                  <AiOutlineForm className="inline me-2" />
+                  Sign Up
+                </Button>
+              </Fade>
             </>
           )}
         </div>
-        <div className="body-content md:mx-14 mx-5 my-3 grid grid-cols-3 text-center dark:text-white">
+        <div className="body-content md:mx-14 mx-5 my-4 grid grid-cols-3 text-center dark:text-white">
           <div className="mt-3">
             <hr className="dark:border-gray-700" />
           </div>
-          <div className="px-3 ">Select what to creat for free</div>
+          <div className="px-3 ">Select what to create for free</div>
           <div className=" mt-3">
             <hr className="dark:border-gray-700" />
           </div>
         </div>
-        <GuestCardLayout />
+        <div className="student-teacher md:mx-14 mx-5 my-3 grid grid-cols-1  text-center dark:text-white">
+          <div className=""></div>
+          <TeacherStudentTab />
+          <div className=""></div>
+        </div>
+        {/* <GuestCardLayout /> */}
       </div>
       <Contact />
       <FooterPage />
