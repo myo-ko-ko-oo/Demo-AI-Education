@@ -16,7 +16,7 @@ const GuestCardLayout = () => {
     <>
       <div className="container mx-auto  my-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          <Fade cascade direction="left"damping={0.4} triggerOnce >
+          <Fade  direction="left" triggerOnce >
             {/* <!--lesson start --> */}
             <div
               onClick={() => navigate("/guest/lesson-start-idea")}
