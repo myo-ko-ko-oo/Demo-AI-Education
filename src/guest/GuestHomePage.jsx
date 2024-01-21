@@ -38,7 +38,7 @@ const GuestHomePage = () => {
             <PaymentNotiMessage message={message} />
           </div>
         )}
-        <Fade direction="down" duration={2000} triggerOnce>
+        <Fade direction="down" duration={1000} triggerOnce>
           <div className="home-image flex justify-center">
             <img className="w-[250px]" src={homeImage} alt="" />
           </div>

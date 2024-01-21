@@ -25,7 +25,7 @@ const StudentCardLayout = () => {
               <div className="lock-icon m-auto"></div>
             </div>
           </div> */}
-          <Fade direction="left" duration={2000}>
+          <Fade direction="left" duration={1000}>
             {/* <!--English --> */}
             <div
               onClick={() => navigate("/student/english-lesson")}

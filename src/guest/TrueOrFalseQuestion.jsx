@@ -1,12 +1,17 @@
 import { Label, Radio, Button, Toast } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
+import { RiAlarmWarningLine } from "react-icons/ri";
+import { MdOutlineDangerous } from "react-icons/md";
 import { useContext } from "react";
 import GuestResponseContext from "../context/GuestResponseContext";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const TrueOrFalseQuestion = () => {
   // Get Data from Context
   let { response } = useContext(GuestResponseContext);
   response = JSON.parse(localStorage.getItem("set_res"));
+  const navigate = useNavigate();
+  const [retry, setRetry] = useState(false);
 
   const [correctMessage, setCorrectMessage] = useState({});
   const [wrongMessage, setWrongMessage] = useState({});
@@ -15,51 +20,130 @@ const TrueOrFalseQuestion = () => {
   const [question_3, setQuestion_3] = useState("");
   const [question_4, setQuestion_4] = useState("");
   const [question_5, setQuestion_5] = useState("");
-  const [overallCorrect, setOverallCorrect] = useState(false);
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [warningMessage, setWarningMessage] = useState("");
+  const [dangerMessage, setDangerMessage] = useState("");
+
+  const handelRetry = () => {
+    window.location.reload();
+   
+
+    console.log(retry);
+  };
 
   const handelTrueFalseSubmit = (e) => {
     e.preventDefault();
-    checkAnswer(response, question_1, 0, setCorrectMessage, setWrongMessage, "question_1");
-    checkAnswer(response, question_2, 1, setCorrectMessage, setWrongMessage, "question_2");
-    checkAnswer(response, question_3, 2, setCorrectMessage, setWrongMessage, "question_3");
-    checkAnswer(response, question_4, 3, setCorrectMessage, setWrongMessage, "question_4");
-    checkAnswer(response, question_5, 4, setCorrectMessage, setWrongMessage, "question_5");
+    const responseAnswers = response.map((data) => data.answer);
+
+    const questionAnswers = {
+      question_1: question_1 ? JSON.parse(question_1) : undefined,
+      question_2: question_2 ? JSON.parse(question_2) : undefined,
+      question_3: question_3 ? JSON.parse(question_3) : undefined,
+      question_4: question_4 ? JSON.parse(question_4) : undefined,
+      question_5: question_5 ? JSON.parse(question_5) : undefined,
+    };
+
+    // console.log(responseAnswers, questionAnswers);
+    let correctCount = 0;
+
+    responseAnswers.forEach((answer, index) => {
+      const questionKey = `question_${index + 1}`;
+
+      if (questionAnswers[questionKey] !== undefined) {
+        if (answer.toString() === questionAnswers[questionKey].toString()) {
+          setCorrectMessage((prevState) => ({
+            ...prevState,
+            [questionKey]: "Correct Answer",
+          }));
+          setWrongMessage((prevState) => ({ ...prevState, [questionKey]: "" }));
+          correctCount++;
+        } else {
+          setWrongMessage((prevState) => ({
+            ...prevState,
+            [questionKey]: "Wrong Answer",
+          }));
+          setCorrectMessage((prevState) => ({
+            ...prevState,
+            [questionKey]: "",
+          }));
+        }
+      } else {
+        setWrongMessage((prevState) => ({
+          ...prevState,
+          [questionKey]: "Please choose an answer",
+        }));
+        setCorrectMessage((prevState) => ({ ...prevState, [questionKey]: "" }));
+      }
+    });
+
+    const correctPercentage = (correctCount / 5) * 100;
+
+    if (correctPercentage === 100) {
+      setSuccessMessage(
+        `Congratulations! You answered all 5 questions correctly (${correctPercentage}%).`
+      );
+    } else if (correctPercentage >= 80) {
+      setSuccessMessage(
+        `Well done! You answered ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+      );
+    } else if (correctPercentage >= 60) {
+      setWarningMessage(
+        `You answered ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+      );
+    }else if (correctPercentage >= 40) {
+      setDangerMessage(
+        `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+      );
+    }
+    else if (correctPercentage >= 20) {
+      setDangerMessage(
+        `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+      );
+    }else if (correctPercentage >= 0) {
+      setDangerMessage(
+        `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+      );
+    }
+    setRetry(true);
   };
-  const checkAnswer = (responseArray, selectedAnswer, index, setCorrect, setWrong, questionKey) => {
-    let isCorrect = false;
+
   
-  if (responseArray && responseArray[index].answer !== undefined) {
-    const correctAnswer = responseArray[index].answer;
 
-    // Convert both correct and selected answers to strings and compare
-    isCorrect = correctAnswer.toString() === selectedAnswer.toString();
-  }
-
-  if (isCorrect) {
-    setCorrect((prevState) => ({ ...prevState, [questionKey]: "Correct answer" }));
-    setWrong((prevState) => ({ ...prevState, [questionKey]: "" }));
-  } else {
-    setWrong((prevState) => ({ ...prevState, [questionKey]: "Wrong answer" }));
-    setCorrect((prevState) => ({ ...prevState, [questionKey]: "" }));
-  }
-
-  setOverallCorrect(isCorrect);
-  }
-  
-   return (
+  return (
     <>
-      {overallCorrect === true ? (
+      {successMessage && (
         <Toast className="mx-auto bg-green-300 mb-2 dark:bg-green-600">
           <div className=" inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
             <HiCheck className="h-5 w-5" />
           </div>
           <div className="ml-3 text-sm font-normal dark:text-white">
-            All answers are correct!
+            {successMessage}
           </div>
           <Toast.Toggle />
         </Toast>
-      ) : (
-        ""
+      )}
+      {warningMessage && (
+        <Toast className="mx-auto bg-yellow-300 mb-2 dark:bg-yellow-400">
+          <div className=" inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
+            <RiAlarmWarningLine className="h-6 w-6 text-yellow-300" />
+          </div>
+          <div className="ml-3 text-sm font-normal dark:text-white">
+            {warningMessage}
+          </div>
+          <Toast.Toggle />
+        </Toast>
+      )}
+      {dangerMessage && (
+        <Toast className="mx-auto bg-rose-500 text-white mb-2 dark:bg-rose-500">
+          <div className=" inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
+            < MdOutlineDangerous className="h-6 w-6 text-rose-400" />
+          </div>
+          <div className="ml-3 text-sm font-normal dark:text-white">
+            {dangerMessage}
+          </div>
+          <Toast.Toggle />
+        </Toast>
       )}
       <form onSubmit={handelTrueFalseSubmit}>
         <div className="bg-gray-50 dark:bg-gray-800 rounded-md mx-1 p-3 md:7 ">
@@ -74,12 +158,32 @@ const TrueOrFalseQuestion = () => {
               <p>1-{response && response[0].question}</p>
               <div className="flex gap-3 mt-2 mb-5">
                 <div className="flex items-center gap-2">
-                  <Radio
+                  {retry === true ? (
+                    <>
+                      <Radio
+                        id="q1-true"
+                        name="question_1"
+                        value={true}
+                        onChange={(e) => setQuestion_1(e.target.value)}
+                        disabled
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <Radio
+                        id="q1-true"
+                        name="question_1"
+                        value={true}
+                        onChange={(e) => setQuestion_1(e.target.value)}
+                      />
+                    </>
+                  )}
+                  {/* <Radio
                     id="q1-true"
                     name="question_1"
                     value={true}
                     onChange={(e) => setQuestion_1(e.target.value)}
-                  />
+                  /> */}
                   <Label htmlFor="q1-true">TRUE</Label>
                 </div>
                 <div className="flex items-center gap-2">
@@ -268,9 +372,34 @@ const TrueOrFalseQuestion = () => {
           </ul>
 
           <div className="buttons mt-5 flex justify-end">
-            <Button type="submit" color="blue" className="">
-              Submit
-            </Button>
+            {retry === true ? (
+              <>
+            <Button
+                  onClick={()=> navigate('/student/english-lesson')}
+                  type="submit"
+                  outline
+                  color="blue"
+                  className="me-2"
+                >
+                  Skip
+                </Button>
+                <Button
+                  onClick={handelRetry}
+                  type="submit"
+                  color="blue"
+                  className=""
+                >
+                  Retry
+                </Button>
+              </>
+            ) : (
+              <>
+              
+                <Button type="submit" color="blue" className="">
+                  Submit
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </form>

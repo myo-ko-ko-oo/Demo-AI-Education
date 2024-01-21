@@ -20,7 +20,7 @@ const GuestCardLayout = () => {
             {/* <!--lesson start --> */}
             <div
               onClick={() => navigate("/guest/lesson-start-idea")}
-              className="lesson-start-idea cursor-pointer hover:-translate-y-1 dark:text-white animate-bounce "
+              className="lesson-start-idea cursor-pointer hover:-translate-y-1 dark:text-white  "
             >
               <div className="grid grid-cols-4 md:grid-cols-1 lg:grid-cols-1 border-2 border-gray-10 shadow-xl rounded-md mx-5 p-4 my-1 dark:border-none dark:bg-gray-800 ">
                 <div className="subject-logo m-auto mb-2">

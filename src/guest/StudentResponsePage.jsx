@@ -35,7 +35,7 @@ const StudentResponsePage = () => {
             {/* Question Area */}
             {response && response[0].type === "type_1" ? (
               <>
-                <Fade direction="left" duration={2000}>
+                <Fade direction="down" duration={2000}>
                   <TrueOrFalseQuestion />
                 </Fade>
               </>
