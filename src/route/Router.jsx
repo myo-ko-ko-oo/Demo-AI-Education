@@ -35,7 +35,7 @@ const Router = () => {
        
         
         <Route element={<GuestLayout />}>
-          <Route path="/" Component={GuestHomePage} />
+          <Route path="/gh-pages-url/" Component={GuestHomePage} />
           <Route
             path="/guest/lesson-start-idea"
             Component={GustLessonStartIdea}
