@@ -25,8 +25,6 @@ const TrueOrFalseQuestion = () => {
   const [warningMessage, setWarningMessage] = useState("");
   const [dangerMessage, setDangerMessage] = useState("");
 
- 
-
   const handelTrueFalseSubmit = (e) => {
     e.preventDefault();
     const responseAnswers = response.map((data) => data.answer);
@@ -86,16 +84,15 @@ const TrueOrFalseQuestion = () => {
       setWarningMessage(
         `You answered ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
-    }else if (correctPercentage >= 40) {
+    } else if (correctPercentage >= 40) {
       setDangerMessage(
         `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
-    }
-    else if (correctPercentage >= 20) {
+    } else if (correctPercentage >= 20) {
       setDangerMessage(
         `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
-    }else if (correctPercentage >= 0) {
+    } else if (correctPercentage >= 0) {
       setDangerMessage(
         `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
@@ -103,41 +100,11 @@ const TrueOrFalseQuestion = () => {
     setRetry(true);
   };
 
-  const initialState = {
-    correctMessage: {},
-    wrongMessage: {},
-    question_1: "", 
-    question_2: "",
-    question_3: "",
-    question_4: "",
-    question_5: "",
-    successMessage: "",
-    warningMessage: "",
-    dangerMessage: "",
-    retry: false,}
-
-  const resetState = () => {
-    setCorrectMessage(initialState.correctMessage);
-    setWrongMessage(initialState.wrongMessage);
-    setQuestion_1(initialState.question_1);
-    setQuestion_2(initialState.question_2);
-    setQuestion_3(initialState.question_3);
-    setQuestion_4(initialState.question_4);
-    setQuestion_5(initialState.question_5);
-    setSuccessMessage(initialState.successMessage);
-    setWarningMessage(initialState.warningMessage);
-    setDangerMessage(initialState.dangerMessage);
-    setRetry(initialState.retry);
-  }
-
+  //Reload Data for Retry Button
   const handelRetry = (e) => {
     e.preventDefault();
-    resetState();
-
-
-    console.log(retry);
+    window.location.reload(false);
   };
-  
 
   return (
     <>
@@ -166,7 +133,7 @@ const TrueOrFalseQuestion = () => {
       {dangerMessage && (
         <Toast className="mx-auto bg-rose-500 text-white mb-2 dark:bg-rose-500">
           <div className=" inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
-            < MdOutlineDangerous className="h-6 w-6 text-rose-400" />
+            <MdOutlineDangerous className="h-6 w-6 text-rose-400" />
           </div>
           <div className="ml-3 text-sm font-normal dark:text-white">
             {dangerMessage}
@@ -187,7 +154,6 @@ const TrueOrFalseQuestion = () => {
               <p>1-{response && response[0].question}</p>
               <div className="flex gap-3 mt-2 mb-5">
                 <div className="flex items-center gap-2">
-                 
                   <Radio
                     id="q1-true"
                     name="question_1"
@@ -384,8 +350,8 @@ const TrueOrFalseQuestion = () => {
           <div className="buttons mt-5 flex justify-end">
             {retry === true ? (
               <>
-            <Button
-                  onClick={()=> navigate('/student/english-lesson')}
+                <Button
+                  onClick={() => navigate("/student/english-lesson")}
                   type="submit"
                   outline
                   color="blue"
@@ -404,7 +370,6 @@ const TrueOrFalseQuestion = () => {
               </>
             ) : (
               <>
-              
                 <Button type="submit" color="blue" className="">
                   Submit
                 </Button>
