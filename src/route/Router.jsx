@@ -27,6 +27,7 @@ import StudentResponsePage from "../guest/StudentResponsePage";
 const Router = () => {
   return (
     <>
+     <HashRouter basename="/app">
       <Routes>
         <Route path="*" Component={NotFoundPage} />
         <Route path="/info" Component={InfoPage} />
@@ -47,9 +48,9 @@ const Router = () => {
             Component={StudentEnglishLesson}
           />
           <Route path="/guest/response" Component={GuestResponsePage} />
-          <HashRouter>
+         
             <Route path="/student/response" Component={StudentResponsePage} />
-          </HashRouter>
+        
 
           <Route path="/pricing" Component={Pricing} />
           <Route element={<RoleLayout />}>
@@ -67,6 +68,7 @@ const Router = () => {
         <Route path="/user/english-lesson" Component={UserEnglishLesson} />
         <Route path="/user/response" Component={UserResponsePage} />
       </Routes>
+      </HashRouter>
     </>
   );
 };
