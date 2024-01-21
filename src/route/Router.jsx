@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router";
-import { HashRouter  } from "react-router-dom";
 import GuestHomePage from "../guest/GuestHomePage";
 import InfoPage from "../view/InfoPage";
 import UserHomePage from "../user/UserHomePage";
@@ -27,7 +26,7 @@ import StudentResponsePage from "../guest/StudentResponsePage";
 const Router = () => {
   return (
     <>
-     <HashRouter basename="/app">
+     
       <Routes>
         <Route path="*" Component={NotFoundPage} />
         <Route path="/info" Component={InfoPage} />
@@ -68,7 +67,7 @@ const Router = () => {
         <Route path="/user/english-lesson" Component={UserEnglishLesson} />
         <Route path="/user/response" Component={UserResponsePage} />
       </Routes>
-      </HashRouter>
+     
     </>
   );
 };
