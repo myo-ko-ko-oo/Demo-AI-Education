@@ -106,7 +106,7 @@ const TrueOrFalseQuestion = () => {
   const initialState = {
     correctMessage: {},
     wrongMessage: {},
-    question_1: "",
+    question_1: "", 
     question_2: "",
     question_3: "",
     question_4: "",
@@ -114,26 +114,25 @@ const TrueOrFalseQuestion = () => {
     successMessage: "",
     warningMessage: "",
     dangerMessage: "",
-    retry: false,
-  };
+    retry: false,}
 
-  // const resetState = () => {
-  //   setCorrectMessage(initialState.correctMessage);
-  //   setWrongMessage(initialState.wrongMessage);
-  //   setQuestion_1(initialState.question_1);
-  //   setQuestion_2(initialState.question_2);
-  //   setQuestion_3(initialState.question_3);
-  //   setQuestion_4(initialState.question_4);
-  //   setQuestion_5(initialState.question_5);
-  //   setSuccessMessage(initialState.successMessage);
-  //   setWarningMessage(initialState.warningMessage);
-  //   setDangerMessage(initialState.dangerMessage);
-  //   setRetry(initialState.retry);
-  // };
+  const resetState = () => {
+    setCorrectMessage(initialState.correctMessage);
+    setWrongMessage(initialState.wrongMessage);
+    setQuestion_1(initialState.question_1);
+    setQuestion_2(initialState.question_2);
+    setQuestion_3(initialState.question_3);
+    setQuestion_4(initialState.question_4);
+    setQuestion_5(initialState.question_5);
+    setSuccessMessage(initialState.successMessage);
+    setWarningMessage(initialState.warningMessage);
+    setDangerMessage(initialState.dangerMessage);
+    setRetry(initialState.retry);
+  }
+
   const handelRetry = (e) => {
     e.preventDefault();
-    // resetState();
-    window.location.reload(false);
+    resetState();
    
 
     console.log(retry);
