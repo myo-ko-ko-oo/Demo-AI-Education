@@ -9,4 +9,7 @@
     h2{
         @apply md:text-xl font-semibold dark:text-white
     }
+    p{
+        @apply font-bold
+    }
 }

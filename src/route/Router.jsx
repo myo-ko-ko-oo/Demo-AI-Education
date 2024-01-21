@@ -23,6 +23,7 @@ import Users from "../admin/Users";
 import StudentEnglishLesson from "../guest/StudentEnglishLesson";
 import StudentResponsePage from "../guest/StudentResponsePage";
 
+
 const Router = () => {
   return (
     <>
@@ -44,8 +45,9 @@ const Router = () => {
           <Route path="/guest/english-lesson" Component={GuestEnglishLesson} />
           <Route path="/student/english-lesson" Component={StudentEnglishLesson} />
           <Route path="/guest/response" Component={GuestResponsePage} />
-          <Route path="/student/response" Component={StudentResponsePage} />
-       
+          <Route path="/gh-pages-url/student/response" Component={StudentResponsePage} />
+         
+
           <Route path="/pricing" Component={Pricing} />
           <Route element={<RoleLayout />}>
             <Route path="/login" Component={Login} />

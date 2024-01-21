@@ -11,6 +11,7 @@ import { Fade } from "react-awesome-reveal";
 // import MultipleChoice from "./MultipleChoice";
 const StudentResponsePage = () => {
   const navigate = useNavigate();
+  
 
   // Get Data from Context
   let { response } = useContext(GuestResponseContext);
@@ -18,7 +19,7 @@ const StudentResponsePage = () => {
 
   return (
     <>
-      <div className="container mt-16 mx-auto  text-gray-500 dark:text-white">
+      <div className="container mt-16 mx-auto  text-gray-600 dark:text-white">
         <span onClick={() => navigate(-1)}>
           <BackButton />
         </span>

@@ -133,7 +133,7 @@ const TrueOrFalseQuestion = () => {
   const handelRetry = (e) => {
     e.preventDefault();
     resetState();
-   
+
 
     console.log(retry);
   };
@@ -187,32 +187,13 @@ const TrueOrFalseQuestion = () => {
               <p>1-{response && response[0].question}</p>
               <div className="flex gap-3 mt-2 mb-5">
                 <div className="flex items-center gap-2">
-                  {retry === true ? (
-                    <>
-                      <Radio
-                        id="q1-true"
-                        name="question_1"
-                        value={true}
-                        onChange={(e) => setQuestion_1(e.target.value)}
-                        disabled
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <Radio
-                        id="q1-true"
-                        name="question_1"
-                        value={true}
-                        onChange={(e) => setQuestion_1(e.target.value)}
-                      />
-                    </>
-                  )}
-                  {/* <Radio
+                 
+                  <Radio
                     id="q1-true"
                     name="question_1"
                     value={true}
                     onChange={(e) => setQuestion_1(e.target.value)}
-                  /> */}
+                  />
                   <Label htmlFor="q1-true">TRUE</Label>
                 </div>
                 <div className="flex items-center gap-2">
@@ -413,7 +394,7 @@ const TrueOrFalseQuestion = () => {
                   Skip
                 </Button>
                 <Button
-                  onClick={(e)=>handelRetry(e)}
+                  onClick={handelRetry}
                   type="submit"
                   color="blue"
                   className=""
