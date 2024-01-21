@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import { HashRouter  } from "react-router-dom";
 import GuestHomePage from "../guest/GuestHomePage";
 import InfoPage from "../view/InfoPage";
 import UserHomePage from "../user/UserHomePage";
@@ -23,7 +24,6 @@ import Users from "../admin/Users";
 import StudentEnglishLesson from "../guest/StudentEnglishLesson";
 import StudentResponsePage from "../guest/StudentResponsePage";
 
-
 const Router = () => {
   return (
     <>
@@ -32,21 +32,24 @@ const Router = () => {
         <Route path="/info" Component={InfoPage} />
         <Route path="/feature" Component={FeaturePage} />
         <Route path="/forget-password" Component={ForgetPassword} />
-       
-        
+
         <Route element={<GuestLayout />}>
-          <Route path="/gh-pages-url/" Component={GuestHomePage} />
+          <Route path="/" Component={GuestHomePage} />
           <Route
             path="/guest/lesson-start-idea"
             Component={GustLessonStartIdea}
           />
-          <Route path="/guest/astrology" Component={GuestAstrology}/>
-          <Route path="/guest/job-guide" Component={GuestJobGuide}/>
+          <Route path="/guest/astrology" Component={GuestAstrology} />
+          <Route path="/guest/job-guide" Component={GuestJobGuide} />
           <Route path="/guest/english-lesson" Component={GuestEnglishLesson} />
-          <Route path="/student/english-lesson" Component={StudentEnglishLesson} />
+          <Route
+            path="/student/english-lesson"
+            Component={StudentEnglishLesson}
+          />
           <Route path="/guest/response" Component={GuestResponsePage} />
-          <Route path="/gh-pages-url/student/response" Component={StudentResponsePage} />
-         
+          <HashRouter>
+            <Route path="/student/response" Component={StudentResponsePage} />
+          </HashRouter>
 
           <Route path="/pricing" Component={Pricing} />
           <Route element={<RoleLayout />}>
@@ -57,11 +60,10 @@ const Router = () => {
 
         <Route element={<AuthLayout />}>
           <Route path="/user/home" Component={UserHomePage} />
-          
         </Route>
-        
-        <Route path="/admin/dashboard" Component={Dashboard}/>
-        <Route path="/admin/users" Component={Users}/>
+
+        <Route path="/admin/dashboard" Component={Dashboard} />
+        <Route path="/admin/users" Component={Users} />
         <Route path="/user/english-lesson" Component={UserEnglishLesson} />
         <Route path="/user/response" Component={UserResponsePage} />
       </Routes>
