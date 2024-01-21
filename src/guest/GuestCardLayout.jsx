@@ -26,7 +26,7 @@ const GuestCardLayout = () => {
                 <div className="subject-logo m-auto mb-2">
                   <HiOutlineLightBulb className="text-yellow-300 text-3xl" />
                 </div>
-                <div className="content col-span-3 ms-2 md:ms-0 md:text-center">
+                <div className="content text-start ms-3  col-span-3 md:text-center">
                   <p>Lesson Start Idea</p>
                   <small>i m small text</small>
                 </div>
@@ -42,7 +42,7 @@ const GuestCardLayout = () => {
                 <div className="subject-logo m-auto mb-2">
                   <TbAbc className="text-green-300 text-3xl" />
                 </div>
-                <div className="content col-span-2 ms-2 md:ms-0 md:text-center">
+                <div className="content  col-span-2 ms-2 md:ms-0 md:text-center">
                   <p>English Lesson</p>
                   <small>i m small text</small>
                 </div>
@@ -144,7 +144,7 @@ const GuestCardLayout = () => {
                 <div className="subject-logo m-auto mb-2">
                   <FaStarOfDavid className="text-orange-500 text-3xl" />
                 </div>
-                <div className="content col-span-3 ms-2 md:ms-0 md:text-center">
+                <div className="content text-start col-span-3 ms-3 md:text-center">
                   <p>Astrology</p>
                   <small>i m small text</small>
                 </div>
@@ -160,7 +160,7 @@ const GuestCardLayout = () => {
                 <div className="subject-logo m-auto mb-2">
                   <FaPlaneDeparture className="text-lime-500 text-3xl" />
                 </div>
-                <div className="content col-span-3 ms-2 md:ms-0 md:text-center">
+                <div className="content col-span-3  text-start ms-3 md:text-center">
                   <p>Oversea Job Guide</p>
                   <small>i m small text</small>
                 </div>

@@ -35,7 +35,7 @@ const StudentCardLayout = () => {
                 <div className="subject-logo m-auto mb-2">
                   <FcReadingEbook className="text-green-300 text-3xl" />
                 </div>
-                <div className="content col-span-2 ms-2 md:ms-0 md:text-center">
+                <div className="content col-span-3 ms-0  md:text-center">
                   <p>Student English Lesson</p>
                   <small>i m small text</small>
                 </div>

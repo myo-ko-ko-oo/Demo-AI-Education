@@ -25,12 +25,7 @@ const TrueOrFalseQuestion = () => {
   const [warningMessage, setWarningMessage] = useState("");
   const [dangerMessage, setDangerMessage] = useState("");
 
-  const handelRetry = () => {
-    window.location.reload();
-   
-
-    console.log(retry);
-  };
+ 
 
   const handelTrueFalseSubmit = (e) => {
     e.preventDefault();
@@ -108,6 +103,41 @@ const TrueOrFalseQuestion = () => {
     setRetry(true);
   };
 
+  const initialState = {
+    correctMessage: {},
+    wrongMessage: {},
+    question_1: "",
+    question_2: "",
+    question_3: "",
+    question_4: "",
+    question_5: "",
+    successMessage: "",
+    warningMessage: "",
+    dangerMessage: "",
+    retry: false,
+  };
+
+  // const resetState = () => {
+  //   setCorrectMessage(initialState.correctMessage);
+  //   setWrongMessage(initialState.wrongMessage);
+  //   setQuestion_1(initialState.question_1);
+  //   setQuestion_2(initialState.question_2);
+  //   setQuestion_3(initialState.question_3);
+  //   setQuestion_4(initialState.question_4);
+  //   setQuestion_5(initialState.question_5);
+  //   setSuccessMessage(initialState.successMessage);
+  //   setWarningMessage(initialState.warningMessage);
+  //   setDangerMessage(initialState.dangerMessage);
+  //   setRetry(initialState.retry);
+  // };
+  const handelRetry = (e) => {
+    e.preventDefault();
+    // resetState();
+    window.location.reload(false);
+   
+
+    console.log(retry);
+  };
   
 
   return (
@@ -384,7 +414,7 @@ const TrueOrFalseQuestion = () => {
                   Skip
                 </Button>
                 <Button
-                  onClick={handelRetry}
+                  onClick={(e)=>handelRetry(e)}
                   type="submit"
                   color="blue"
                   className=""
