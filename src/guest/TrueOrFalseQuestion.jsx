@@ -86,15 +86,15 @@ const TrueOrFalseQuestion = () => {
       );
     } else if (correctPercentage >= 40) {
       setDangerMessage(
-        `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+        `You answered ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
     } else if (correctPercentage >= 20) {
       setDangerMessage(
-        `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+        `You answered ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
     } else if (correctPercentage >= 0) {
       setDangerMessage(
-        `You need to improve ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
+        `You answered ${correctCount} out of 5 questions correctly (${correctPercentage}%).`
       );
     }
     setRetry(true);
